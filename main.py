@@ -23,7 +23,7 @@ async def tell_her_what_time_it_is():
     await client.wait_until_ready()
     send_time   = "10:33"
     wait_time   = 1
-    channel_id  = "553288190018977793"
+    channel_id  = "462408914609111082"
     channel     = client.get_channel(channel_id)
     mp4_file    = 'its_1033/its_1033_final.mp4'
     while not client.is_closed:
