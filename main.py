@@ -1,6 +1,9 @@
+from datetime import datetime
+from random import seed
+from random import randint
 import asyncio
 import discord
-from datetime import datetime
+import re
 
 client = discord.Client()
 
@@ -12,6 +15,25 @@ async def on_ready():
 async def on_message(message):
     if message.author == client.user:
         return
+
+    regexp = re.compile(r'\b(?:(A|a)*(?:(H|h)(A|a))+h?|(?:(L|l)+(O|o)+)+(L|l)+)\b')
+    if regexp.search(message.content):
+        value = randint(0,1000)
+        responses = [
+            "lol",
+            "haha",
+            "Haha",
+            "ahaha",
+            "Ahaha",
+            "hahaha",
+            "Hahaha"
+        ]
+        print("Detected laughter: {}".format(value))
+        print(value)
+        if (value >= 950):
+            print("Laughing in unison...")
+            response_idx = randint(0,len(responses) - 1)
+            await client.send_message(message.channel, content = responses[response_idx])
 
     if "penis" in message.content:
         await client.send_message(message.channel, content = "Duhuhuhuh")
