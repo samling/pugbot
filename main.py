@@ -16,8 +16,8 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    regexp = re.compile(r'\b(?:(A|a)*(?:(H|h)(A|a))+h?|(?:(L|l)+(O|o)+)+(L|l)+)\b')
-    if regexp.search(message.content):
+    laughter_regexp = re.compile(r'\b(?:(A|a)*(?:(H|h)(A|a))+h?|(?:(L|l)+(O|o)+)+(L|l)+)\b')
+    if laughter_regexp.search(message.content):
         value = randint(0,1000)
         responses = [
             "lol",
@@ -35,7 +35,8 @@ async def on_message(message):
             response_idx = randint(0,len(responses) - 1)
             await client.send_message(message.channel, content = responses[response_idx])
 
-    if "penis" in message.content:
+    penis_regexp = re.compile(r'(P|p)enis')
+    if penis_regexp.search(message.content):
         await client.send_message(message.channel, content = "Duhuhuhuh")
 
     if "10:33" in message.content:
