@@ -8,4 +8,4 @@ ADD . .
 
 RUN cp /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 
-CMD [ "python", "main.py" ]
+CMD [ "python", "-u", "main.py" ]
