@@ -5,38 +5,53 @@
 * Docker-Compose (latest available version)
 * Python 3.6.5 or newer (python 3.7.x not supported)
 * Pip (latest available version)
-* pyenv-virtualenv (optional; latest available version)
+* pyenv (latest available version)
+* Homebrew (optional)
 * Discord bot application and token (see [here](https://discordapp.com/developers/applications/))
 
 ### Local Development Setup
+0. Install pyenv via Homebrew:
+
+    `brew install pyenv`
+
 1. Clone this repository
 
-2. Create a new virtual environment
-    * Using standard virtualenv (e.g. if system python is 3.6.x):
+2. Install and set the local python version with pyenv:
 
-        `python -m virtualenv pugbot`
+    `pyenv install 3.6.8`
+    
+    `pyenv local 3.6.8`
 
-    * Using pyenv-virtualenv (e.g. if system python is >3.6.x<):
+    (Recommended) Verify python version with `python --version`:
 
-        `pyenv virtualenv 3.6.5 pugbot`
+    ```
+     ~ > which python
+    python is /Users/sboynton/.pyenv/shims/python
+     ~ > python --version
+    Python 3.6.8
+    ```
+
+2. Install virtualenv and create a new virtual environment:
+
+    `python -m pip install virtualenv`
+
+    `python -m virtualenv pugbot`
+
 3. Activate the virtual environment:
 
-    * Using standard virtualenv (e.g. if system python is 3.6.x):
-    
-        `source ./pugbot/bin/activate`
+    `source ./pugbot/bin/activate`
 
-    * Using pyenv-virtualenv (e.g. if system python is >3.6.x<):
-
-        `pyenv activate pugbot`
 4. Install the pip requirements:
 
     `pip install -r requirements.txt`
+
 5. Create pugbot.cfg:
 
     ```
     [DEFAULT]
     BOT_TOKEN = your.token.here
     ```
+
 6. Run the bot locally:
 
     `python main.py`
