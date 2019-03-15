@@ -3,14 +3,25 @@ from random import seed
 from random import randint
 import asyncio
 import discord
+import logging
 import re
 
+# Main client
 client = discord.Client()
+
+# Logger
+logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
+logger = logging.getLogger()
+
+# Stream to stdout
+consoleHandler = logging.StreamHandler()
+consoleHandler.setFormatter(logFormatter)
+logger.addHandler(consoleHandler)
 
 # Initial ready state
 @client.event
 async def on_ready():
-    print('We have logged in as {0.user}'.format(client))
+    logger.debug('We have logged in as {0.user}'.format(client))
 
 # Responses for received messages
 @client.event
