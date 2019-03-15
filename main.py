@@ -2,15 +2,24 @@ from datetime import datetime
 from random import seed
 from random import randint
 import asyncio
+import configparser
 import discord
 import logging
 import re
 import sys
 
-# Main client
-client = discord.Client()
+##############
+### Config ###
+##############
 
-# Logger
+config = configparser.ConfigParser()
+config.read('pugbot.cfg')
+bot_token = config['DEFAULT']['BOT_TOKEN']
+
+##############
+### Logger ###
+##############
+
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 
@@ -24,6 +33,13 @@ consoleHandler.setFormatter(logFormatter)
 
 # Add the handler
 logger.addHandler(consoleHandler)
+
+###################
+### Main client ###
+###################
+
+# Client object
+client = discord.Client()
 
 # Initial ready state
 @client.event
@@ -72,8 +88,7 @@ async def tell_her_what_time_it_is():
     await client.wait_until_ready()
     send_time   = "10:33"
     wait_time   = 1
-    channel_id  = "462408914609111082" # General; TODO: Find the channel ID programmatically
-    channel     = client.get_channel(channel_id)
+    channel     = discord.utils.get(client.get_all_channels(), name="general")
     mp4_file    = 'its_1033/its_1033_final.mp4'
     while not client.is_closed:
         now = datetime.strftime(datetime.now(), "%H:%M")
@@ -87,4 +102,4 @@ async def tell_her_what_time_it_is():
 # Asynchronous task loops
 client.loop.create_task(tell_her_what_time_it_is())
 
-client.run('NTUxNzE4Njc2MzAzMTgzODgy.D2L1sg.Z0DpvoFR4gmB5cs5HkJy8sFEMvw')
+client.run(bot_token)
