@@ -5,17 +5,24 @@ import asyncio
 import discord
 import logging
 import re
+import sys
 
 # Main client
 client = discord.Client()
 
 # Logger
-logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
 logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
 
-# Stream to stdout
-consoleHandler = logging.StreamHandler()
+# Set stream handler to stdout and print debug messages
+consoleHandler = logging.StreamHandler(sys.stdout)
+consoleHandler.setLevel(logging.DEBUG)
+
+# Set format for debug logs
+logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
 consoleHandler.setFormatter(logFormatter)
+
+# Add the handler
 logger.addHandler(consoleHandler)
 
 # Initial ready state
