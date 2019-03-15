@@ -34,6 +34,10 @@ async def on_message(message):
             print("Laughing in unison...")
             response_idx = randint(0,len(responses) - 1)
             await client.send_message(message.channel, content = responses[response_idx])
+    
+    annoyed_regexp = re.compile(r'\b(god( ?)dam(m?n?i?t?)|fucking)( ?)pugbot\b', re.IGNORECASE)
+    if annoyed_regexp.search(message.content):
+        await client.send_message(message.channel, content = "Sorry")
 
     penis_regexp = re.compile(r'(P|p)enis')
     if penis_regexp.search(message.content):
