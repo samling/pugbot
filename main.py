@@ -103,12 +103,12 @@ async def on_message(message):
         await client.send_message(message.channel, content = help_text)
 
     # Parse input, determine if it's a file or text, and respond accordingly
-    command_regex = re.compile(r'^\!\w+')
+    command_regex = re.compile(r'^\!\w+') # Command starts with '!'?
     command = command_regex.search(message.content)
     if command is not None:
         for key, val in commands.items():
             if key == command.group():
-                extension_regex = re.compile(r'([a-zA-Z0-9\s_\\.\-\(\):])+(.mp4|.gif|.gifv)$')
+                extension_regex = re.compile(r'([a-zA-Z0-9\s_\\.\-\(\):])+(.mp4|.gif|.gifv)$') # Value for command is a video/gif?
                 is_video = extension_regex.search(val)
                 if is_video is not None:
                     await client.send_file(message.channel, val)
