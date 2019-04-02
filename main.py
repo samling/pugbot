@@ -52,6 +52,10 @@ async def on_message(message):
     if message.author == client.user:
         return
 
+    ######################
+    ### AUTO RESPONSES ###
+    ######################
+
     # Randomly chime in with laughter
     laughter_regexp = re.compile(r'\b(?:a*(?:ha)+h?|(?:l+o+)+l+)\b', re.IGNORECASE)
     if laughter_regexp.search(message.content):
@@ -79,13 +83,32 @@ async def on_message(message):
     if penis_regexp.search(message.content):
         await client.send_message(message.channel, content = "Duhuhuhuh")
 
-    # Tell her what time it is
-    if "10:33" in message.content:
-        await client.send_file(message.channel, 'video/its_1033/its_1033_final.mp4')
+    ################
+    ### COMMANDS ###
+    ################
 
-    # Give it a whirl
-    if message.content == "!whirl":
-        await client.send_file(message.channel, 'video/whirl/whirl.gif')
+    commands = {
+        "!1033": "video/its_1033/its_1033_final.mp4",
+        "!whirl": "video/whirl/whirl.gif"
+    }
+
+    # List all commands
+    if message.content == "!commands":
+        await client.send_message(message.channel, content = "")
+
+    # Parse input
+    command_regex = re.compile(r'^\!\w+')
+    c = command_regex.search(message.content)
+    print(c.group(0))
+        
+    # Tell her what time it is
+    #if "10:33" in message.content:
+    #if message.content == "!1033":
+    #    await client.send_file(message.channel, 'video/its_1033/its_1033_final.mp4')
+
+    ## Give it a whirl
+    #if message.content == "!whirl":
+    #    await client.send_file(message.channel, 'video/whirl/whirl.gif')
 
 # Tell her what time it is every day at 10:33
 async def tell_her_what_time_it_is():
