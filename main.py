@@ -87,28 +87,33 @@ async def on_message(message):
     ### COMMANDS ###
     ################
 
+    # Commands and responses; responses ending with a supported video extension are sent as files
     commands = {
-        "!1033": "video/its_1033/its_1033_final.mp4",
-        "!whirl": "video/whirl/whirl.gif"
+        "!1033":    "video/its_1033/its_1033_final.mp4",
+        "!whirl":   "video/whirl/whirl.gif",
+        "!laugh":   "Duhuhuhuh"
     }
 
     # List all commands
-    if message.content == "!commands":
-        await client.send_message(message.channel, content = "")
+    available_commands = list(commands.keys())
+    help_text = 'List of available commands:\n\n'
+    for command in available_commands:
+        help_text = help_text + command + '\n'
+    if message.content == "!commands" or message.content == "!help":
+        await client.send_message(message.channel, content = help_text)
 
-    # Parse input
+    # Parse input, determine if it's a file or text, and respond accordingly
     command_regex = re.compile(r'^\!\w+')
-    c = command_regex.search(message.content)
-    print(c.group(0))
-        
-    # Tell her what time it is
-    #if "10:33" in message.content:
-    #if message.content == "!1033":
-    #    await client.send_file(message.channel, 'video/its_1033/its_1033_final.mp4')
-
-    ## Give it a whirl
-    #if message.content == "!whirl":
-    #    await client.send_file(message.channel, 'video/whirl/whirl.gif')
+    command = command_regex.search(message.content)
+    if command is not None:
+        for key, val in commands.items():
+            if key == command.group():
+                extension_regex = re.compile(r'([a-zA-Z0-9\s_\\.\-\(\):])+(.mp4|.gif|.gifv)$')
+                is_video = extension_regex.search(val)
+                if is_video is not None:
+                    await client.send_file(message.channel, val)
+                else:
+                    await client.send_message(message.channel, content = val)
 
 # Tell her what time it is every day at 10:33
 async def tell_her_what_time_it_is():
