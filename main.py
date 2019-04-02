@@ -81,7 +81,11 @@ async def on_message(message):
 
     # Tell her what time it is
     if "10:33" in message.content:
-        await client.send_file(message.channel, 'its_1033/its_1033_final.mp4')
+        await client.send_file(message.channel, 'video/its_1033/its_1033_final.mp4')
+
+    # Give it a whirl
+    if message.content == "!whirl":
+        await client.send_file(message.channel, 'video/whirl/whirl.gif')
 
 # Tell her what time it is every day at 10:33
 async def tell_her_what_time_it_is():
@@ -89,7 +93,7 @@ async def tell_her_what_time_it_is():
     send_time   = "10:33"
     wait_time   = 1
     channel     = discord.utils.get(client.get_all_channels(), name="general")
-    mp4_file    = 'its_1033/its_1033_final.mp4'
+    mp4_file    = 'video/its_1033/its_1033_final.mp4'
     while not client.is_closed:
         now = datetime.strftime(datetime.now(), "%H:%M")
         if now == send_time:
