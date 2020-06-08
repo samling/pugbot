@@ -74,7 +74,7 @@ async def on_message(message):
             await client.send_message(message.channel, content = responses[response_idx])
 
     # Respond curiously if we mention pugbot only by name
-    pugbot_regexp = re.compile(r'^(?:hey|yo|sup)?\s+pugbot[.!?]*$'), re.IGNORECASE)
+    pugbot_regexp = re.compile(r'^(?:hey|yo|sup)?\s+pugbot[.!?]*$', re.IGNORECASE)
     if pugbot_regex.search(message.content):
          responses = [
             "gifs/simpsons-you-rang.gif"
