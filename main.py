@@ -77,10 +77,10 @@ async def on_message(message):
     pugbot_regexp = re.compile(r'^(?:hey\s|yo\s|sup\s)?pugbot[.!?]*$', re.IGNORECASE)
     if pugbot_regexp.search(message.content):
         responses = [
-            "gif/simpsons-you-rang.gif",
-            "gif/pug-look-back.gif",
-            "gif/pug-tip-hat.gif",
-            "gif/pug-oh-no-you-didnt.gif",
+            "gif/simpsons-you-rang.mp4",
+            "gif/pug-look-back.mp4",
+            "gif/pug-tip-hat.mp4",
+            "gif/pug-oh-no-you-didnt.mp4",
             "img/lee-pug.png"
         ]
         response_idx = randint(0,len(responses) - 1)
