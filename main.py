@@ -72,7 +72,16 @@ async def on_message(message):
         if (value <= 5): # 5% chance to respond
             response_idx = randint(0,len(responses) - 1)
             await client.send_message(message.channel, content = responses[response_idx])
-    
+
+    # Respond curiously if we mention pugbot only by name
+    pugbot_regexp = re.compile(r'^(?:hey|yo|sup)?\s+pugbot[.!?]*$'), re.IGNORECASE)
+    if pugbot_regex.search(message.content):
+         responses = [
+            "gifs/simpsons-you-rang.gif"
+        ]
+        response_idx = randint(0,len(responses) - 1)
+        await client.send_file(message.channel, responses[response_idx])
+   
     # Apologize if we get annoyed with pugbot
     annoyed_regexp = re.compile(r'\b(god( ?)dam(m?n?i?t?)|fucking)( ?)pugbot\b', re.IGNORECASE)
     if annoyed_regexp.search(message.content):
