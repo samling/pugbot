@@ -77,7 +77,7 @@ async def on_message(message):
     pugbot_regexp = re.compile(r'^(?:hey|yo|sup)?\s+pugbot[.!?]*$', re.IGNORECASE)
     if pugbot_regexp.search(message.content):
         responses = [
-            "gifs/simpsons-you-rang.gif"
+            "gif/simpsons-you-rang.gif"
         ]
         response_idx = randint(0,len(responses) - 1)
         await client.send_file(message.channel, responses[response_idx])
