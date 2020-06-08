@@ -76,7 +76,7 @@ async def on_message(message):
     # Respond curiously if we mention pugbot only by name
     pugbot_regexp = re.compile(r'^(?:hey|yo|sup)?\s+pugbot[.!?]*$', re.IGNORECASE)
     if pugbot_regex.search(message.content):
-         responses = [
+        responses = [
             "gifs/simpsons-you-rang.gif"
         ]
         response_idx = randint(0,len(responses) - 1)
