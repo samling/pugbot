@@ -81,7 +81,8 @@ async def on_message(message):
             "gif/pug-look-back.gif",
             "gif/pug-tip-hat.gif",
             "gif/pug-oh-no-you-didnt.gif",
-            "img/lee-pug.png"
+            "img/lee-pug.png",
+            "img/colin-pug.png"
         ]
         response_idx = randint(0,len(responses) - 1)
         await client.send_file(message.channel, responses[response_idx])
