@@ -96,6 +96,9 @@ async def on_message(message):
     penis_regexp = re.compile(r'(P|p)enis')
     if penis_regexp.search(message.content):
         await client.send_message(message.channel, content = "Duhuhuhuh")
+    69_regexp = re.compile(r'\b69\b')
+    if 69_regexp.search(message.content):
+        await client.send_message(message.channel, content = "_Nice_")
 
     ################
     ### COMMANDS ###
