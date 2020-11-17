@@ -92,6 +92,19 @@ async def on_message(message):
     if annoyed_regexp.search(message.content):
         await client.send_message(message.channel, content = "Sorry")
 
+    # Respond to thank yous
+    thankyou_regexp = re.compile(r'\b(thanks|thank you)( ?)pugbot\b', re.IGNORECASE)
+    if thankyou_regexp.search(message.content):
+        responses = [
+            "img/fingerguns.png",
+            "👌"
+        ]
+        response_idx = randint(0,len(responses) - 1)
+        if responses[response_idx].startswith("img","gif")
+            await client.send_file(message.channel, responses[response_idx])
+        else
+            await client.send_message(message.channel, content = responses[response_idx])
+
     # Express pugbot's inner child
     penis_regexp = re.compile(r'(P|p)enis')
     if penis_regexp.search(message.content):
