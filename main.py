@@ -97,8 +97,8 @@ async def on_message(message):
     if penis_regexp.search(message.content):
         await client.send_message(message.channel, content = "Duhuhuhuh")
 
-    69_regexp = re.compile(r'\b69\b')
-    if 69_regexp.search(message.content):
+    sixtynine_regexp = re.compile(r'\b69\b')
+    if sixtynine_regexp.search(message.content):
         await client.send_message(message.channel, content = "_Nice_")
 
     ################
