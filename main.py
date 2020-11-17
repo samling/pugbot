@@ -100,9 +100,9 @@ async def on_message(message):
             "👌"
         ]
         response_idx = randint(0,len(responses) - 1)
-        if responses[response_idx].startswith("img","gif")
+        if responses[response_idx].startswith("img","gif"):
             await client.send_file(message.channel, responses[response_idx])
-        else
+        else:
             await client.send_message(message.channel, content = responses[response_idx])
 
     # Express pugbot's inner child
