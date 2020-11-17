@@ -99,7 +99,8 @@ async def on_message(message):
             "img/fingerguns.png",
         ]
         response_idx = randint(0,len(responses) - 1)
-        if responses[response_idx].startswith("img","gif"):
+        print(responses[response_idx])
+        if responses[response_idx].startswith("img"):
             await client.send_file(message.channel, responses[response_idx])
         else:
             await client.send_message(message.channel, content = responses[response_idx])
