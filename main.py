@@ -97,9 +97,9 @@ async def on_message(message):
     if thankyou_regexp.search(message.content):
         responses = [
             "img/fingerguns.png",
+            "👌"
         ]
         response_idx = randint(0,len(responses) - 1)
-        print(responses[response_idx])
         if responses[response_idx].startswith("img"):
             await client.send_file(message.channel, responses[response_idx])
         else:
