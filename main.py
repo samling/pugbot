@@ -97,7 +97,6 @@ async def on_message(message):
     if thankyou_regexp.search(message.content):
         responses = [
             "img/fingerguns.png",
-            "👌"
         ]
         response_idx = randint(0,len(responses) - 1)
         if responses[response_idx].startswith("img","gif"):
