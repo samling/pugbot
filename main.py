@@ -98,7 +98,7 @@ async def on_message(message):
         await client.send_message(message.channel, content = "Duhuhuhuh")
     69_regexp = re.compile(r'\b69\b')
     if 69_regexp.search(message.content):
-        await client.send_message(message.channel, content = "_Nice_")
+        await client.send_message(message.channel, content = "Nice")
 
     ################
     ### COMMANDS ###
