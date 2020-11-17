@@ -110,7 +110,7 @@ async def on_message(message):
     if penis_regexp.search(message.content):
         await client.send_message(message.channel, content = "Duhuhuhuh")
 
-    sixtynine_regexp = re.compile(r'\b69\b')
+    sixtynine_regexp = re.compile(r'\b69(th)?(ing)?\b')
     if sixtynine_regexp.search(message.content):
         responses = [
             "Nice",
