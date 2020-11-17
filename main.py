@@ -112,7 +112,14 @@ async def on_message(message):
 
     sixtynine_regexp = re.compile(r'\b69\b')
     if sixtynine_regexp.search(message.content):
-        await client.send_message(message.channel, content = "_Nice_")
+        responses = [
+            "Nice",
+            "_Nice_",
+            "Noice",
+            "_Noice_"
+        ]
+        response_idx = randint(0,len(responses) - 1)
+        await client.send_message(message.channel, content = responses[response_idx])
 
     ################
     ### COMMANDS ###
