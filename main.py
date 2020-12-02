@@ -97,6 +97,7 @@ async def on_message(message):
     if thankyou_regexp.search(message.content):
         responses = [
             "img/fingerguns.png",
+            "img/lionking-pug.png",
             "👌"
         ]
         response_idx = randint(0,len(responses) - 1)
