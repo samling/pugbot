@@ -69,7 +69,7 @@ async def on_message(message):
             "hahaha",
             "Hahaha"
         ]
-        if (value <= 5): # 5% chance to respond
+        if (value <= 2): # 2% chance to respond
             response_idx = randint(0,len(responses) - 1)
             await client.send_message(message.channel, content = responses[response_idx])
 
